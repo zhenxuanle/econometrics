@@ -18,9 +18,21 @@ MLR1-6假定中只放松同方差假定，即数据存在异方差性，则OSL�
 
 ### 2、White检验
 
+工具库载入同上一节，输入导入和预处理工作是通过新增一个空数据表，然后将取对数后的数据逐一增加到该数据表中，加入常数项后，形成解释变量数据表。
+
+```py
+data=pd.read_excel('d:/econometrics/hprice1.xls',header=None)
+data.rename(columns={0:'price',3:'lotsize',4:'sqrft',2:'bdrms'},inplace=True)
+data.exog=pd.DataFrame()
+data.exog['log_lotsize']=np.log(data[['lotsize']])
+data.exog['log_sqrft']=np.log(data[['sqrft']])
+data.exog['bdrms']=data[['bdrms']]
+```
+
 ## 三、异方差性处理
 
 ### 1、加权最小二乘估计
 
+  
 
 
